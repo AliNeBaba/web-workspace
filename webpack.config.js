@@ -31,6 +31,56 @@ const plugins = () => {
       filename: 'index.html',
       minify: {collapseWhitespace: isProd}
     }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/barrier.html'),
+      filename: 'services/barrier.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/fan.html'),
+      filename: 'services/fan.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/fire.html'),
+      filename: 'services/fire.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/home.html'),
+      filename: 'services/home.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/phone.html'),
+      filename: 'services/phone.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/tv.html'),
+      filename: 'services/tv.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/services/videowatch.html'),
+      filename: 'services/videowatch.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/source/photo.html'),
+      filename: 'source/photo.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/source/info.html'),
+      filename: 'source/info.html',
+      minify: {collapseWhitespace: isProd}
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'src/source/videoonline.html'),
+      filename: 'source/videoonline.html',
+      minify: {collapseWhitespace: isProd}
+    }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `./css/${filename('css')}`
@@ -70,11 +120,10 @@ module.exports = {
   output: {
     filename: `./js/${filename('js')}`,
     path: path.resolve(__dirname, 'dist'),
-    publicPath: ''
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'dist'),
     open: true,
     compress: true,
     hot: true,
@@ -82,7 +131,7 @@ module.exports = {
   },
   optimization: optimization(),
   plugins: plugins(),
-  devtool: isProd ? false : 'source-map',
+  devtool: isProd ? false : 'inline-source-map',
   module: {
     rules: [
       {
@@ -137,7 +186,7 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: `./img/${filename('[ext]')}`
+            name: `./imgs/${filename('[ext]')}`
           }
         }],
       }, {
